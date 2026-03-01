@@ -101,27 +101,27 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#0066FF] opacity-10 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[#FF6B00] opacity-10 blur-[120px] pointer-events-none" />
 
-      {/* Badge */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 pt-10">
-        <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 backdrop-blur-sm">
-          <span className="w-2 h-2 rounded-full bg-[#FF6B00] animate-pulse" />
-          <span className="text-xs font-body text-[#FF6B00] font-medium tracking-wide">
-            Набор открыт · Осталось 12 мест
-          </span>
-        </div>
-      </div>
-
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-20">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-24 sm:pt-20">
+        {/* Badge */}
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-[#FF6B00] animate-pulse" />
+            <span className="text-xs font-body text-[#FF6B00] font-medium tracking-wide">
+              Набор открыт · Осталось 12 мест
+            </span>
+          </div>
+        </div>
+
         {/* Main heading */}
         <h1 className="font-display font-black leading-[0.95] mb-6">
-          <span className="block text-5xl md:text-7xl lg:text-8xl text-gradient-white mb-2">
+          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-white mb-2">
             Зарабатывай на
           </span>
-          <span className="block text-5xl md:text-7xl lg:text-8xl text-gradient-orange">
+          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-orange">
             Авито
           </span>
-          <span className="block text-5xl md:text-7xl lg:text-8xl text-gradient-white">
+          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-white">
             от 100 000 ₽/мес
           </span>
         </h1>
@@ -149,12 +149,12 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
           {stats.map((stat, i) => (
             <div key={i} className="flex items-center gap-4">
               <div className="text-center">
-                <div className="font-display font-black text-3xl text-gradient-blue">{stat.value}</div>
-                <div className="font-body text-sm text-white/50">{stat.label}</div>
+                <div className="font-display font-black text-2xl sm:text-3xl text-gradient-blue">{stat.value}</div>
+                <div className="font-body text-xs sm:text-sm text-white/50">{stat.label}</div>
               </div>
               {i < stats.length - 1 && (
                 <div className="hidden sm:block w-px h-10 bg-white/10" />
