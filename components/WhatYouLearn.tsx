@@ -1,0 +1,140 @@
+'use client';
+
+const modules = [
+  {
+    number: '01',
+    title: 'Выбор прибыльной ниши',
+    desc: 'Найдёшь нишу с высоким спросом и минимальной конкуренцией. Покажу 15 проверенных категорий с реальными цифрами маржи.',
+    topics: ['Анализ спроса через статистику', 'ТОП-15 прибыльных ниш', 'Расчёт юнит-экономики'],
+    color: '#0066FF',
+  },
+  {
+    number: '02',
+    title: 'Создание продающих объявлений',
+    desc: 'Объявление — это твой менеджер по продажам. Научу писать тексты, делать фото и выставлять цену, которые конвертируют.',
+    topics: ['Формулы продающих заголовков', 'Фотосъёмка для Авито', 'A/B тесты объявлений'],
+    color: '#FF6B00',
+  },
+  {
+    number: '03',
+    title: 'Продвижение и алгоритмы',
+    desc: 'Как работает поисковый алгоритм Авито и как попасть в топ без лишних затрат на рекламу.',
+    topics: ['SEO-оптимизация объявлений', 'Бесплатные методы продвижения', 'Платная реклама с ROI 300%+'],
+    color: '#00CFFF',
+  },
+  {
+    number: '04',
+    title: 'Дропшиппинг и масштаб',
+    desc: 'Продавай без товара. Схемы работы с поставщиками, автоматизация и делегирование — вплоть до пассивного дохода.',
+    topics: ['Поиск надёжных поставщиков', 'Автоматизация рутины', 'Построение команды'],
+    color: '#9B5DE5',
+  },
+  {
+    number: '05',
+    title: 'Работа с покупателями',
+    desc: 'Скрипты переговоров, работа с возражениями, как делать апселл и получать 5-звёздочные отзывы.',
+    topics: ['Скрипты продаж', 'Работа с отзывами', 'Повторные продажи'],
+    color: '#FF6B00',
+  },
+  {
+    number: '06',
+    title: 'Финансы и учёт',
+    desc: 'Как правильно считать доход, минимизировать налоги, работать с ИП или самозанятостью.',
+    topics: ['Самозанятость vs ИП', 'Таблица учёта доходов', 'Оптимизация расходов'],
+    color: '#0066FF',
+  },
+];
+
+export default function WhatYouLearn() {
+  return (
+    <section id="learn" className="py-24 px-6 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full bg-[#FF6B00] opacity-5 blur-[150px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4 reveal">
+            <div className="w-8 h-px bg-[#FF6B00]" />
+            <span className="font-display text-xs text-[#FF6B00] tracking-widest uppercase">Программа курса</span>
+            <div className="w-8 h-px bg-[#FF6B00]" />
+          </div>
+          <h2 className="font-display font-black text-4xl md:text-6xl text-white leading-tight mb-4 reveal">
+            Чему ты
+            <br />
+            <span className="text-gradient-blue">научишься</span>
+          </h2>
+          <p className="font-body text-white/60 max-w-xl mx-auto reveal">
+            6 модулей с практическими заданиями и живой проверкой куратора. 
+            Без воды — только то, что реально работает в 2025 году.
+          </p>
+        </div>
+
+        {/* Modules grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {modules.map((module, i) => (
+            <div
+              key={i}
+              className="group card-glass rounded-3xl p-6 border border-[#1E1E35] hover:border-[#1E1E55] transition-all duration-300 hover:-translate-y-1 reveal relative overflow-hidden"
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
+              {/* Background accent */}
+              <div
+                className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-5 blur-3xl transition-opacity duration-300 group-hover:opacity-10"
+                style={{ background: module.color }}
+              />
+
+              {/* Number */}
+              <div className="font-display font-black text-5xl opacity-10 text-white mb-3">{module.number}</div>
+
+              {/* Color indicator */}
+              <div
+                className="w-8 h-1 rounded-full mb-4"
+                style={{ background: module.color }}
+              />
+
+              {/* Content */}
+              <h3 className="font-display font-bold text-lg text-white mb-2 leading-snug">{module.title}</h3>
+              <p className="font-body text-sm text-white/55 leading-relaxed mb-4">{module.desc}</p>
+
+              {/* Topics */}
+              <div className="flex flex-col gap-2">
+                {module.topics.map((topic, j) => (
+                  <div key={j} className="flex items-center gap-2">
+                    <div
+                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                      style={{ background: module.color }}
+                    />
+                    <span className="font-body text-xs text-white/50">{topic}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA banner */}
+        <div className="mt-12 gradient-border rounded-3xl p-0.5 reveal">
+          <div className="card-glass rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h3 className="font-display font-bold text-2xl text-white mb-2">
+                Бонус для первых 20 участников
+              </h3>
+              <p className="font-body text-white/60">
+                Закрытый Telegram-чат + личная консультация с автором + 
+                шаблоны всех объявлений и таблицы учёта
+              </p>
+            </div>
+            <a
+              href="#apply"
+              className="btn-primary px-8 py-4 rounded-2xl font-display text-sm font-bold tracking-wide whitespace-nowrap"
+            >
+              Хочу бонусы →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
