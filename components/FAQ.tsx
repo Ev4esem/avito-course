@@ -65,14 +65,13 @@ export default function FAQ() {
         </div>
 
         {/* FAQ items */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 reveal">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className={`card-glass rounded-2xl border transition-all duration-300 reveal ${
+              className={`card-glass rounded-2xl border transition-colors duration-300 ${
                 openIndex === i ? 'border-[#D4AF37]/30' : 'border-[#1E1E1E] hover:border-[#2E2E2E]'
               }`}
-              style={{ transitionDelay: `${i * 50}ms` }}
             >
               <button
                 onClick={() => toggle(i)}
