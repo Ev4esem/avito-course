@@ -6,8 +6,9 @@ const plans = [
     price: '9 900',
     oldPrice: '19 900',
     desc: 'Для тех, кто хочет попробовать и разобраться в основах',
-    color: '#6B6B8A',
+    color: '#6B6B6B',
     popular: false,
+    isVip: false,
     features: [
       { text: 'Доступ к 6 модулям курса', included: true },
       { text: 'Видеоуроки + конспекты', included: true },
@@ -23,8 +24,9 @@ const plans = [
     price: '24 900',
     oldPrice: '44 900',
     desc: 'Самый популярный тариф — с кураторством и обратной связью',
-    color: '#FF6B00',
+    color: '#DC2626',
     popular: true,
+    isVip: false,
     features: [
       { text: 'Доступ к 6 модулям курса', included: true },
       { text: 'Видеоуроки + конспекты', included: true },
@@ -40,8 +42,9 @@ const plans = [
     price: '49 900',
     oldPrice: '89 900',
     desc: 'Максимальный результат с личным сопровождением автора',
-    color: '#0066FF',
+    color: '#D4AF37',
     popular: false,
+    isVip: true,
     features: [
       { text: 'Доступ к 6 модулям курса', included: true },
       { text: 'Видеоуроки + конспекты', included: true },
@@ -58,25 +61,21 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-24 px-6 relative overflow-hidden">
       {/* Glow */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#0066FF] opacity-5 blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#DC2626] opacity-5 blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4 reveal">
-            <div className="w-8 h-px bg-[#0066FF]" />
-            <span className="font-display text-xs text-[#0066FF] tracking-widest uppercase">Тарифы</span>
-            <div className="w-8 h-px bg-[#0066FF]" />
+            <div className="w-8 h-px bg-[#DC2626]" />
+            <span className="font-display text-xs text-[#DC2626] tracking-widest uppercase">Тарифы</span>
+            <div className="w-8 h-px bg-[#DC2626]" />
           </div>
           <h2 className="font-display font-black text-4xl md:text-6xl text-white leading-tight mb-4 reveal">
             Выбери свой
             <br />
-            <span className="text-gradient-orange">формат</span>
+            <span className="text-gradient-red">формат</span>
           </h2>
-          <p className="font-body text-white/60 max-w-xl mx-auto reveal">
-            Гарантия возврата денег в течение 7 дней, если курс не понравится. 
-            Без вопросов и без бюрократии.
-          </p>
         </div>
 
         {/* Plans */}
@@ -89,8 +88,16 @@ export default function Pricing() {
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                  <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FF6B00] to-[#FFB800] font-display text-xs font-bold text-white shadow-lg">
+                  <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#DC2626] to-[#EF4444] font-display text-xs font-bold text-white shadow-lg">
                     🔥 Хит продаж
+                  </div>
+                </div>
+              )}
+
+              {plan.isVip && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                  <div className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#F5D76E] font-display text-xs font-bold text-black shadow-lg">
+                    👑 VIP
                   </div>
                 </div>
               )}
@@ -98,8 +105,10 @@ export default function Pricing() {
               <div
                 className={`h-full flex flex-col rounded-3xl p-6 border transition-all duration-300 hover:-translate-y-1 ${
                   plan.popular
-                    ? 'bg-gradient-to-b from-[#FF6B00]/10 to-[#12121F] border-[#FF6B00]/40 glow-orange'
-                    : 'card-glass border-[#1E1E35] hover:border-[#2E2E4E]'
+                    ? 'bg-gradient-to-b from-[#DC2626]/10 to-[#111111] border-[#DC2626]/40 glow-red'
+                    : plan.isVip
+                    ? 'bg-gradient-to-b from-[#D4AF37]/10 to-[#111111] border-[#D4AF37]/40 glow-gold'
+                    : 'card-glass border-[#1E1E1E] hover:border-[#2E2E2E]'
                 }`}
               >
                 {/* Plan name & desc */}
@@ -117,7 +126,7 @@ export default function Pricing() {
                 <div className="mb-6">
                   <div className="font-body text-sm text-white/40 line-through mb-1">{plan.oldPrice} ₽</div>
                   <div className="flex items-end gap-2">
-                    <span className="font-display font-black text-4xl text-white">{plan.price}</span>
+                    <span className={`font-display font-black text-4xl ${plan.isVip ? 'text-gradient-gold' : 'text-white'}`}>{plan.price}</span>
                     <span className="font-body text-white/60 mb-1">₽</span>
                   </div>
                   <div className="font-body text-xs text-white/40">единоразово</div>
@@ -139,7 +148,7 @@ export default function Pricing() {
                           </svg>
                         ) : (
                           <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                            <path d="M1 1L7 7M7 1L1 7" stroke="#6B6B8A" strokeWidth="1.5" strokeLinecap="round" />
+                            <path d="M1 1L7 7M7 1L1 7" stroke="#6B6B6B" strokeWidth="1.5" strokeLinecap="round" />
                           </svg>
                         )}
                       </div>
@@ -160,41 +169,16 @@ export default function Pricing() {
                   className={`block text-center py-4 rounded-2xl font-display text-sm font-bold tracking-wide transition-all ${
                     plan.popular
                       ? 'btn-primary'
+                      : plan.isVip
+                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#F5D76E] text-black hover:shadow-[0_8px_40px_rgba(212,175,55,0.4)] hover:-translate-y-0.5'
                       : 'border border-white/20 text-white/70 hover:text-white hover:border-white/40'
                   }`}
                 >
-                  {plan.popular ? 'Выбрать этот тариф →' : 'Записаться'}
+                  {plan.isVip ? 'Выбрать VIP →' : plan.popular ? 'Выбрать этот тариф →' : 'Записаться'}
                 </a>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Guarantee */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 reveal">
-          <div className="flex items-center gap-3">
-            <span className="text-3xl">🛡️</span>
-            <div>
-              <div className="font-display font-bold text-white text-sm">Гарантия 7 дней</div>
-              <div className="font-body text-xs text-white/50">Возврат без вопросов</div>
-            </div>
-          </div>
-          <div className="w-px h-8 bg-white/10 hidden sm:block" />
-          <div className="flex items-center gap-3">
-            <span className="text-3xl">💳</span>
-            <div>
-              <div className="font-display font-bold text-white text-sm">Рассрочка 0%</div>
-              <div className="font-body text-xs text-white/50">На 6 месяцев</div>
-            </div>
-          </div>
-          <div className="w-px h-8 bg-white/10 hidden sm:block" />
-          <div className="flex items-center gap-3">
-            <span className="text-3xl">🔒</span>
-            <div>
-              <div className="font-display font-bold text-white text-sm">Безопасная оплата</div>
-              <div className="font-body text-xs text-white/50">Защита покупателя</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

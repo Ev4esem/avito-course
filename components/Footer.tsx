@@ -1,13 +1,13 @@
 export default function Footer() {
   return (
-    <footer className="py-12 px-6 border-t border-[#1E1E35]">
+    <footer className="py-12 px-6 border-t border-[#1E1E1E]">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#0066FF] to-[#FF6B00] flex items-center justify-center">
+          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#DC2626] to-[#D4AF37] flex items-center justify-center">
             <span className="font-display text-xs font-bold text-white">АП</span>
           </div>
           <span className="font-display text-sm font-bold text-white">
-            Авито<span className="text-gradient-orange">Про</span>
+            Авито<span className="text-gradient-red">Про</span>
           </span>
         </div>
         <p className="font-body text-xs text-white/30 text-center">

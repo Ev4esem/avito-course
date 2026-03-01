@@ -2,12 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 
-const stats = [
-  { value: '1 200+', label: 'выпускников' },
-  { value: '₽150К', label: 'средний доход' },
-  { value: '14 дней', label: 'до первых продаж' },
-];
-
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -33,7 +27,7 @@ export default function Hero() {
         vy: (Math.random() - 0.5) * 0.4,
         size: Math.random() * 2 + 0.5,
         opacity: Math.random() * 0.5 + 0.1,
-        color: Math.random() > 0.5 ? '#0066FF' : '#FF6B00',
+        color: Math.random() > 0.5 ? '#DC2626' : '#D4AF37',
       });
     }
 
@@ -62,7 +56,7 @@ export default function Hero() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(0, 102, 255, ${0.08 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(220, 38, 38, ${0.08 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -98,16 +92,16 @@ export default function Hero() {
       />
 
       {/* Glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#0066FF] opacity-10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[#FF6B00] opacity-10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#DC2626] opacity-10 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[#D4AF37] opacity-10 blur-[120px] pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-24 sm:pt-20">
         {/* Badge */}
         <div className="flex justify-center mb-6 sm:mb-8">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#FF6B00]/30 bg-[#FF6B00]/10 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-[#FF6B00] animate-pulse" />
-            <span className="text-xs font-body text-[#FF6B00] font-medium tracking-wide">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#DC2626]/30 bg-[#DC2626]/10 backdrop-blur-sm">
+            <span className="w-2 h-2 rounded-full bg-[#DC2626] animate-pulse" />
+            <span className="text-xs font-body text-[#DC2626] font-medium tracking-wide">
               Набор открыт · Осталось 12 мест
             </span>
           </div>
@@ -118,7 +112,7 @@ export default function Hero() {
           <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-white mb-2">
             Зарабатывай на
           </span>
-          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-orange">
+          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-red">
             Авито
           </span>
           <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-white">
@@ -128,12 +122,12 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p className="font-body text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Практический курс с живым наставником. Реальные схемы, конкретные ниши 
-          и пошаговый план — от нуля до стабильного дохода за 30 дней.
+          Практический курс с живым наставником. Реальные схемы, конкретные ниши
+          и пошаговый план — от нуля до стабильного дохода за 21 день.
         </p>
 
         {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#apply"
             className="btn-primary px-8 py-4 rounded-2xl font-display text-sm font-bold tracking-wide inline-block text-center"
@@ -146,21 +140,6 @@ export default function Hero() {
           >
             Смотреть программу
           </a>
-        </div>
-
-        {/* Stats */}
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-          {stats.map((stat, i) => (
-            <div key={i} className="flex items-center gap-4">
-              <div className="text-center">
-                <div className="font-display font-black text-2xl sm:text-3xl text-gradient-blue">{stat.value}</div>
-                <div className="font-body text-xs sm:text-sm text-white/50">{stat.label}</div>
-              </div>
-              {i < stats.length - 1 && (
-                <div className="hidden sm:block w-px h-10 bg-white/10" />
-              )}
-            </div>
-          ))}
         </div>
       </div>
 

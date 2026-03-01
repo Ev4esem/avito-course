@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import WhatYouLearn from '@/components/WhatYouLearn';
 import Pricing from '@/components/Pricing';
+import FAQ from '@/components/FAQ';
 import ApplicationForm from '@/components/ApplicationForm';
 import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
@@ -35,6 +36,7 @@ export default function Home() {
       <About />
       <WhatYouLearn />
       <Pricing />
+      <FAQ />
       <ApplicationForm />
       <Footer />
     </main>

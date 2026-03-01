@@ -13,12 +13,12 @@ module.exports = {
       },
       colors: {
         avito: {
-          blue: '#0066FF',
-          orange: '#FF6B00',
-          dark: '#0A0A14',
-          card: '#12121F',
-          border: '#1E1E35',
-          muted: '#6B6B8A',
+          red: '#DC2626',
+          gold: '#D4AF37',
+          dark: '#0A0A0A',
+          card: '#111111',
+          border: '#1E1E1E',
+          muted: '#6B6B6B',
         },
       },
       animation: {

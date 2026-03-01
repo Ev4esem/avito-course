@@ -22,17 +22,17 @@ export default function Nav() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3 bg-[#0A0A14]/95 backdrop-blur-xl border-b border-[#1E1E35]' : 'py-5'
+        scrolled ? 'py-3 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-[#1E1E1E]' : 'py-5'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0066FF] to-[#FF6B00] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#DC2626] to-[#D4AF37] flex items-center justify-center">
             <span className="font-display text-xs font-bold text-white">АП</span>
           </div>
           <span className="font-display text-sm font-bold text-white">
-            Авито<span className="text-gradient-orange">Про</span>
+            Авито<span className="text-gradient-red">Про</span>
           </span>
         </a>
 
@@ -74,7 +74,7 @@ export default function Nav() {
           menuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="px-6 py-4 flex flex-col gap-4 bg-[#0A0A14]/95 backdrop-blur-xl border-t border-[#1E1E35]">
+        <div className="px-6 py-4 flex flex-col gap-4 bg-[#0A0A0A]/95 backdrop-blur-xl border-t border-[#1E1E1E]">
           {links.map((link) => (
             <a
               key={link.href}
