@@ -4,7 +4,12 @@ import { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import WhatYouLearn from '@/components/WhatYouLearn';
+import ProgramLogic from '@/components/ProgramLogic';
+import PriceBreakdown from '@/components/PriceBreakdown';
 import Pricing from '@/components/Pricing';
+import Guarantee from '@/components/Guarantee';
+import Summary from '@/components/Summary';
+import ThreePaths from '@/components/ThreePaths';
 import FAQ from '@/components/FAQ';
 import ApplicationForm from '@/components/ApplicationForm';
 import Footer from '@/components/Footer';
@@ -35,7 +40,12 @@ export default function Home() {
       <Hero />
       <About />
       <WhatYouLearn />
+      <ProgramLogic />
+      <PriceBreakdown />
+      <Guarantee />
+      <Summary />
       <Pricing />
+      <ThreePaths />
       <FAQ />
       <ApplicationForm />
       <Footer />
