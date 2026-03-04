@@ -78,6 +78,7 @@ export default function About() {
               Кто <span className="text-gradient-red">я</span>
             </h2>
 
+
             <div className="flex flex-col gap-6">
               <div className="card-glass rounded-2xl border border-white/10 p-6 hover:border-[#DC2626]/20 transition-colors">
                 <div className="flex items-center gap-3 mb-3">
@@ -120,6 +121,16 @@ export default function About() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-12 reveal">
+          <a
+            href="#apply"
+            className="btn-primary inline-block px-10 py-4 rounded-2xl font-display text-base font-bold tracking-wide shadow-[0_8px_40px_rgba(220,38,38,0.5)]"
+          >
+            Оставить заявку →
+          </a>
         </div>
       </div>
     </section>

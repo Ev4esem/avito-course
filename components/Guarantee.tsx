@@ -119,11 +119,20 @@ export default function Guarantee() {
 
         {/* Bottom statement */}
         <div className="reveal text-center">
-          <div className="inline-block card-glass rounded-2xl border border-[#DC2626]/20 px-8 py-5">
+          <div className="inline-block card-glass rounded-2xl border border-[#DC2626]/20 px-8 py-5 mb-10">
             <p className="font-display font-bold text-white text-base md:text-lg">
               Я отвечаю за качество продукта своей{' '}
               <span className="text-gradient-red">репутацией и деньгами.</span>
             </p>
+          </div>
+          <div>
+            <a
+              href="#apply"
+              className="btn-primary inline-block px-10 py-4 rounded-2xl font-display text-base font-bold tracking-wide shadow-[0_8px_40px_rgba(220,38,38,0.5)]"
+            >
+              Оставить заявку →
+            </a>
+            <p className="font-body text-white/40 text-xs mt-4">Без рисков — с гарантией возврата</p>
           </div>
         </div>
       </div>
