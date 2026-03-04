@@ -38,7 +38,7 @@ export default function Guarantee() {
             <span className="font-display text-xs text-[#D4AF37] tracking-widest uppercase">Гарантии</span>
             <div className="w-8 h-px bg-[#D4AF37]" />
           </div>
-          <h2 className="font-display font-black text-4xl md:text-5xl text-white leading-tight mb-4">
+          <h2 className="font-display font-black text-2xl md:text-5xl text-white leading-tight mb-4">
             Я полностью уверен в качестве{' '}
             <span className="text-gradient-gold">своего обучения</span>
           </h2>

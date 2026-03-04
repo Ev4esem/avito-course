@@ -6,8 +6,7 @@ export default function ApplicationForm() {
   const [form, setForm] = useState({
     name: '',
     phone: '',
-    telegram: '',
-    tariff: 'Практик',
+    tariff: 'Полноценный',
     goal: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -29,7 +28,7 @@ export default function ApplicationForm() {
       });
       if (res.ok) {
         setStatus('success');
-        setForm({ name: '', phone: '', telegram: '', tariff: 'Практик', goal: '' });
+        setForm({ name: '', phone: '', tariff: 'Полноценный', goal: '' });
       } else {
         setStatus('error');
       }
@@ -71,7 +70,7 @@ export default function ApplicationForm() {
                 <div className="text-6xl mb-4">🎉</div>
                 <h3 className="font-display font-bold text-2xl text-white mb-2">Заявка принята!</h3>
                 <p className="font-body text-white/60">
-                  Мы свяжемся с тобой в течение 30 минут. Проверь Telegram!
+                  Мы свяжемся с тобой в течение 30 минут.
                 </p>
               </div>
             ) : (
@@ -108,37 +107,29 @@ export default function ApplicationForm() {
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-5">
-                  {/* Telegram */}
-                  <div>
-                    <label className="font-display text-xs text-white/50 tracking-wider uppercase mb-2 block">
-                      Telegram (username)
-                    </label>
-                    <input
-                      type="text"
-                      name="telegram"
-                      value={form.telegram}
-                      onChange={handleChange}
-                      placeholder="@username"
-                      className="w-full bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl px-4 py-3.5 font-body text-white placeholder-white/25 focus:outline-none focus:border-[#DC2626]/50 transition-colors"
-                    />
-                  </div>
-
-                  {/* Tariff */}
-                  <div>
-                    <label className="font-display text-xs text-white/50 tracking-wider uppercase mb-2 block">
-                      Тариф
-                    </label>
+                {/* Tariff — full width */}
+                <div>
+                  <label className="font-display text-xs text-white/50 tracking-wider uppercase mb-2 block">
+                    Тариф
+                  </label>
+                  <div className="relative">
                     <select
                       name="tariff"
                       value={form.tariff}
                       onChange={handleChange}
-                      className="w-full bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl px-4 py-3.5 font-body text-white focus:outline-none focus:border-[#DC2626]/50 transition-colors appearance-none cursor-pointer"
+                      className="w-full bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl px-4 py-3.5 font-body text-white focus:outline-none focus:border-[#DC2626]/50 transition-colors appearance-none cursor-pointer pr-10"
                     >
-                      <option value="Старт">Старт — 9 900 ₽</option>
-                      <option value="Практик">Практик — 24 900 ₽</option>
-                      <option value="VIP">VIP — 49 900 ₽</option>
+                      <option value="Базовый">Базовый — 4 990 ₽</option>
+                      <option value="Полноценный">Полноценный — 7 490 ₽</option>
+                      <option value="VIP">VIP — 19 990 ₽</option>
+                      <option value="Личное наставничество">Личное наставничество — 49 990 ₽</option>
                     </select>
+                    {/* Arrow icon */}
+                    <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M3 5L7 9L11 5" stroke="#6B6B6B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
@@ -171,7 +162,7 @@ export default function ApplicationForm() {
                       Отправляем...
                     </span>
                   ) : (
-                    'Отправить заявку и получить бонусы →'
+                    'Отправить заявку →'
                   )}
                 </button>
 

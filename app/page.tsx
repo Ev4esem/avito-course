@@ -5,7 +5,6 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import WhatYouLearn from '@/components/WhatYouLearn';
 import Guarantee from '@/components/Guarantee';
-import Summary from '@/components/Summary';
 import Pricing from '@/components/Pricing';
 import ThreePaths from '@/components/ThreePaths';
 import FAQ from '@/components/FAQ';
@@ -39,7 +38,6 @@ export default function Home() {
       <About />
       <WhatYouLearn />
       <Guarantee />
-      <Summary />
       <Pricing />
       <ThreePaths />
       <FAQ />
