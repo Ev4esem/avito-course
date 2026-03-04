@@ -114,26 +114,6 @@ export default function WhatYouLearn() {
           ))}
         </div>
 
-        {/* Bottom CTA banner */}
-        <div className="mt-12 gradient-border rounded-3xl p-0.5 reveal">
-          <div className="card-glass rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-display font-bold text-2xl text-white mb-2">
-                Бонус для первых 20 участников
-              </h3>
-              <p className="font-body text-white/60">
-                Закрытый Telegram-чат + личная консультация с автором +
-                шаблоны всех объявлений и таблицы учёта
-              </p>
-            </div>
-            <a
-              href="#apply"
-              className="btn-primary px-8 py-4 rounded-2xl font-display text-sm font-bold tracking-wide whitespace-nowrap"
-            >
-              Хочу бонусы →
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

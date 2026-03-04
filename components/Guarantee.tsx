@@ -1,5 +1,28 @@
 'use client';
 
+const guarantees = [
+  {
+    num: '1',
+    accent: '#DC2626',
+    title: '100% гарантия возврата денег (3 дня)',
+    body: [
+      'Если в течение первых 3 дней ты понимаешь, что формат, подача или программа тебе не подходят — я делаю полный возврат средств без лишних вопросов и разбирательств.',
+      'Без скрытых условий. Без давления. Без «попробуй ещё».',
+      'Ты принимаешь решение — я возвращаю деньги.',
+    ],
+  },
+  {
+    num: '2',
+    accent: '#D4AF37',
+    title: 'Гарантия окупаемости во время обучения',
+    body: [
+      'Моя задача — не просто дать информацию, а довести тебя до результата.',
+      'Если ты выполняешь все рекомендации, внедряешь стратегии и следуешь системе, но не выходишь на результат и не окупаешь обучение — я делаю полный возврат средств.',
+      'Мне важно твоё реальное достижение, а не просто факт прохождения программы.',
+    ],
+  },
+];
+
 export default function Guarantee() {
   return (
     <section className="py-24 px-6 relative overflow-hidden">
@@ -8,76 +31,99 @@ export default function Guarantee() {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#DC2626] opacity-[0.05] blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
-        <div className="rounded-3xl overflow-hidden border border-[#D4AF37]/20 bg-gradient-to-br from-[#D4AF37]/5 to-[#111111] grid md:grid-cols-2 gap-0">
+        {/* Header */}
+        <div className="text-center mb-14 reveal">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-px bg-[#D4AF37]" />
+            <span className="font-display text-xs text-[#D4AF37] tracking-widest uppercase">Гарантии</span>
+            <div className="w-8 h-px bg-[#D4AF37]" />
+          </div>
+          <h2 className="font-display font-black text-4xl md:text-5xl text-white leading-tight mb-4">
+            Я полностью уверен в качестве{' '}
+            <span className="text-gradient-gold">своего обучения</span>
+          </h2>
+          <p className="font-body text-white/60 max-w-2xl mx-auto text-base leading-relaxed">
+            Я уверен в тех инструментах, которые даю. Именно поэтому{' '}
+            <span className="text-white/90 font-semibold">все риски я беру на себя.</span>
+          </p>
+        </div>
 
+        <div className="grid lg:grid-cols-2 gap-8 mb-10">
           {/* Photo placeholder */}
-          <div className="relative min-h-[360px] md:min-h-[480px] bg-gradient-to-br from-[#1A1A1A] to-[#111111] flex items-center justify-center overflow-hidden">
-            {/* Placeholder content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 opacity-30">
-              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                <rect x="1" y="1" width="62" height="62" rx="12" stroke="#D4AF37" strokeWidth="1.5" strokeDasharray="4 4" />
-                <circle cx="32" cy="26" r="10" stroke="#D4AF37" strokeWidth="1.5" />
-                <path d="M12 52c0-11 9-18 20-18s20 7 20 18" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-              <span className="font-display text-xs text-[#D4AF37] tracking-widest uppercase">Фото автора</span>
-            </div>
+          <div className="reveal order-2 lg:order-1">
+            <div className="relative h-full min-h-[360px] rounded-3xl overflow-hidden bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] border border-white/10 flex items-center justify-center">
+              {/* Placeholder */}
+              <div className="flex flex-col items-center justify-center gap-4 opacity-25">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                  <rect x="1" y="1" width="62" height="62" rx="12" stroke="#D4AF37" strokeWidth="1.5" strokeDasharray="4 4" />
+                  <circle cx="32" cy="26" r="10" stroke="#D4AF37" strokeWidth="1.5" />
+                  <path d="M12 52c0-11 9-18 20-18s20 7 20 18" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+                <span className="font-display text-xs text-[#D4AF37] tracking-widest uppercase">Фото автора</span>
+              </div>
 
-            {/* Badge overlay */}
-            <div className="absolute bottom-6 left-6 right-6 md:right-auto">
-              <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#0A0A0A]/80 backdrop-blur-sm border border-[#D4AF37]/30">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#F5D76E] flex items-center justify-center flex-shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M9 1L11.06 6.26L17 7.27L13 11.14L13.99 17L9 14.27L4.01 17L5 11.14L1 7.27L6.94 6.26L9 1Z" fill="#0A0A0A" stroke="#0A0A0A" strokeWidth="0.5" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="font-display font-black text-white text-sm">100% гарантия</div>
-                  <div className="font-body text-white/50 text-xs">возврата денег · 3 дня</div>
+              {/* Badge */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#0A0A0A]/90 backdrop-blur-sm border border-[#D4AF37]/30 w-full">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#F5D76E] flex items-center justify-center flex-shrink-0">
+                    <svg width="18" height="20" viewBox="0 0 18 20" fill="none">
+                      <path d="M9 1L2 5V10C2 15.5 5.8 19.7 9 21C12.2 19.7 16 15.5 16 10V5L9 1Z" fill="#0A0A0A" />
+                      <path d="M6 10L8 12L12 8" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-display font-black text-white text-sm">Ты ничем не рискуешь</div>
+                    <div className="font-body text-white/50 text-xs">Репутация и деньги — моя ответственность</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Text content */}
-          <div className="flex flex-col justify-center px-8 md:px-12 py-12 reveal">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-px bg-[#D4AF37]" />
-              <span className="font-display text-xs text-[#D4AF37] tracking-widest uppercase">Гарантия</span>
-            </div>
+          {/* Guarantees */}
+          <div className="flex flex-col gap-6 order-1 lg:order-2">
+            {guarantees.map((g, i) => (
+              <div
+                key={i}
+                className="reveal card-glass rounded-3xl border p-7 transition-all duration-300 hover:-translate-y-0.5"
+                style={{
+                  borderColor: g.accent + '30',
+                  transitionDelay: `${i * 100}ms`,
+                }}
+              >
+                {/* Number + title */}
+                <div className="flex items-start gap-4 mb-5">
+                  <div
+                    className="w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+                    style={{ background: `linear-gradient(135deg, ${g.accent}, ${g.accent}99)` }}
+                  >
+                    <span className="font-display font-black text-white text-base">{g.num}</span>
+                  </div>
+                  <h3 className="font-display font-bold text-white text-base md:text-lg leading-snug pt-1">
+                    {g.title}
+                  </h3>
+                </div>
 
-            <h2 className="font-display font-black text-3xl md:text-4xl text-white leading-tight mb-6">
-              К тому же я даю{' '}
-              <span className="text-gradient-gold">100% гарантию</span>{' '}
-              возврата денег
-            </h2>
-
-            <div className="flex flex-col gap-5 font-body text-white/70 text-base leading-relaxed">
-              <p>
-                Я так уверен в качестве своих продуктов, что даю тебе гарантию{' '}
-                <span className="text-[#D4AF37] font-semibold">100% возврата денег (на 3 дня)! БЕЗ ВОПРОСОВ!</span>
-              </p>
-              <p>
-                Если тебе не понравится продукт и ты не увидишь в нём никакой ценности —{' '}
-                <span className="text-white/90">ты сможешь вернуть свои деньги!</span>
-              </p>
-              <p>
-                Я хочу продать только тем, кто действительно останется довольным! Все риски за качество своих продуктов я всегда беру на себя!
-              </p>
-            </div>
-
-            {/* Shield icon row */}
-            <div className="mt-8 flex items-center gap-3 px-5 py-4 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#D4AF37]/30 to-[#D4AF37]/10 flex items-center justify-center flex-shrink-0">
-                <svg width="20" height="22" viewBox="0 0 20 22" fill="none">
-                  <path d="M10 1L2 5V10C2 15.5 5.8 20.7 10 22C14.2 20.7 18 15.5 18 10V5L10 1Z" stroke="#D4AF37" strokeWidth="1.5" strokeLinejoin="round" />
-                  <path d="M7 11L9 13L13 9" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                {/* Body */}
+                <div className="flex flex-col gap-3 pl-14">
+                  {g.body.map((line, j) => (
+                    <p key={j} className="font-body text-white/65 text-sm leading-relaxed">
+                      {line}
+                    </p>
+                  ))}
+                </div>
               </div>
-              <div>
-                <div className="font-display font-bold text-[#D4AF37] text-sm">Защищённая покупка</div>
-                <div className="font-body text-white/50 text-xs">Возврат без вопросов в течение 3 дней</div>
-              </div>
-            </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom statement */}
+        <div className="reveal text-center">
+          <div className="inline-block card-glass rounded-2xl border border-[#DC2626]/20 px-8 py-5">
+            <p className="font-display font-bold text-white text-base md:text-lg">
+              Я отвечаю за качество продукта своей{' '}
+              <span className="text-gradient-red">репутацией и деньгами.</span>
+            </p>
           </div>
         </div>
       </div>

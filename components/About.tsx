@@ -1,36 +1,12 @@
 'use client';
 
 const achievements = [
-  { icon: '🏆', text: '5 лет опыта на Авито' },
-  { icon: '💰', text: 'Личный оборот 3 млн+/мес' },
-  { icon: '📚', text: '1200+ обученных учеников' },
-  { icon: '⭐', text: 'Рейтинг 4.9/5 от студентов' },
-  { icon: '🎯', text: '15+ протестированных ниш' },
-  { icon: '📺', text: '50К+ подписчиков в Telegram' },
-];
-
-const results = [
-  {
-    name: 'Алексей К.',
-    city: 'Москва',
-    result: '₽180 000/мес',
-    desc: 'Через 3 недели после старта курса заработал первые 80К. Сейчас стабильно 180К.',
-    emoji: '🤑',
-  },
-  {
-    name: 'Марина Л.',
-    city: 'СПб',
-    result: '₽95 000/мес',
-    desc: 'Бывший офисный сотрудник. Теперь работаю из дома, без начальника и расписания.',
-    emoji: '🙌',
-  },
-  {
-    name: 'Дмитрий В.',
-    city: 'Краснодар',
-    result: '₽220 000/мес',
-    desc: 'Занимаюсь дропшиппингом через Авито. Результат превзошёл все ожидания.',
-    emoji: '🚀',
-  },
+  { icon: '🏆', text: 'Предприниматель с нуля' },
+  { icon: '💰', text: 'Доход 300 000 ₽+/мес' },
+  { icon: '📚', text: 'Сотни обученных учеников' },
+  { icon: '🎯', text: 'Результат в 3–5 раз быстрее' },
+  { icon: '🔥', text: 'Только практика и реальные схемы' },
+  { icon: '🚀', text: 'Ушёл из найма благодаря Авито' },
 ];
 
 export default function About() {
@@ -38,57 +14,47 @@ export default function About() {
     <section id="about" className="py-24 px-6 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#DC2626] opacity-5 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#D4AF37] opacity-[0.04] blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto">
         {/* Section label */}
-        <div className="flex items-center gap-3 mb-4 reveal">
+        <div className="flex items-center gap-3 mb-12 reveal">
           <div className="w-8 h-px bg-[#DC2626]" />
           <span className="font-display text-xs text-[#DC2626] tracking-widest uppercase">Об авторе</span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-14 items-start">
           {/* Left: Author card */}
           <div className="reveal">
-            {/* Author photo placeholder / card */}
-            <div className="relative mb-8">
-              <div className="gradient-border rounded-3xl p-0.5">
-                <div className="card-glass rounded-3xl p-8">
-                  {/* Avatar */}
-                  <div className="flex items-center gap-5 mb-6">
-                    <div className="relative">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#DC2626] to-[#D4AF37] flex items-center justify-center text-3xl font-display font-black text-white">
-                        АН
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-500 border-2 border-[#111111]" />
+            <div className="gradient-border rounded-3xl p-0.5 mb-6">
+              <div className="card-glass rounded-3xl p-8">
+                {/* Avatar */}
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="relative">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#DC2626] to-[#D4AF37] flex items-center justify-center text-3xl font-display font-black text-white">
+                      А
                     </div>
-                    <div>
-                      <h3 className="font-display font-bold text-xl text-white">Антон Николаев</h3>
-                      <p className="font-body text-sm text-white/50">Эксперт по монетизации Авито</p>
-                      <div className="flex gap-1 mt-1">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-[#D4AF37] text-sm">★</span>
-                        ))}
-                        <span className="font-body text-xs text-white/40 ml-1">4.9</span>
-                      </div>
-                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-green-500 border-2 border-[#111111]" />
                   </div>
-
-                  <p className="font-body text-white/70 leading-relaxed text-sm mb-6">
-                    Начинал с нуля в 2019 году — первые 3 месяца не мог выйти даже на 30 000 рублей.
-                    Изучил все ошибки на своей шкуре, нашёл рабочие схемы и за следующие полгода
-                    вышел на <span className="text-white font-medium">оборот 1.2 млн рублей в месяц.</span>
-                  </p>
-                  <p className="font-body text-white/70 leading-relaxed text-sm">
-                    Сегодня я обучаю людей избегать моих ошибок и добиваться результата
-                    <span className="text-[#DC2626] font-medium"> в 3–5 раз быстрее</span>, чем я сам.
-                  </p>
+                  <div>
+                    <h3 className="font-display font-bold text-xl text-white">Ахмад</h3>
+                    <p className="font-body text-sm text-white/50">Предприниматель · Наставник по Авито</p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Floating achievement */}
-              <div className="absolute -top-4 -right-4 card-glass rounded-2xl px-4 py-3 border border-[#1E1E1E] glow-red">
-                <div className="font-display font-black text-2xl text-gradient-red">₽3M+</div>
-                <div className="font-body text-xs text-white/50">оборот в месяц</div>
+                <p className="font-body text-white/70 leading-relaxed text-sm mb-4">
+                  Начал с полного нуля — без опыта, связей и капитала. Самостоятельно изучил площадку,
+                  протестировал десятки подходов, прошёл через ошибки и сливы бюджета, нашёл рабочие
+                  схемы и после этого{' '}
+                  <span className="text-white font-medium">полностью ушёл из найма.</span>
+                </p>
+                <p className="font-body text-white/70 leading-relaxed text-sm">
+                  Сегодня обучаю людей запускаться и зарабатывать на Авито, помогая им приходить к
+                  результату в{' '}
+                  <span className="text-[#DC2626] font-medium">3–5 раз быстрее</span>, чем когда-то пришёл я.
+                  Я не даю теорию — только практику, проверенные стратегии и пошаговые действия,
+                  которые приводят к реальным деньгам.
+                </p>
               </div>
             </div>
 
@@ -106,37 +72,52 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right: Results */}
-          <div>
-            <h2 className="font-display font-black text-4xl md:text-5xl text-white leading-tight mb-4 reveal">
-              Результаты
-              <br />
-              <span className="text-gradient-red">моих учеников</span>
+          {/* Right: Story */}
+          <div className="reveal">
+            <h2 className="font-display font-black text-4xl md:text-5xl text-white leading-tight mb-8">
+              Кто <span className="text-gradient-red">я</span>
             </h2>
-            <p className="font-body text-white/60 mb-8 leading-relaxed reveal">
-              Не слова — цифры. Каждый кейс реальный, с подтверждёнными скринами доходов.
-            </p>
 
-            <div className="flex flex-col gap-4">
-              {results.map((r, i) => (
-                <div
-                  key={i}
-                  className={`card-glass rounded-2xl p-5 border border-[#1E1E1E] hover:border-[#DC2626]/20 transition-all hover:-translate-y-0.5 reveal`}
-                  style={{ transitionDelay: `${i * 100}ms` }}
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-display font-bold text-white text-sm">{r.name}</span>
-                        <span className="font-body text-xs text-white/40">{r.city}</span>
-                      </div>
-                      <div className="font-display font-black text-xl text-gradient-red">{r.result}</div>
-                    </div>
-                    <span className="text-2xl">{r.emoji}</span>
+            <div className="flex flex-col gap-6">
+              <div className="card-glass rounded-2xl border border-white/10 p-6 hover:border-[#DC2626]/20 transition-colors">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded-xl bg-[#DC2626]/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#DC2626] text-sm">01</span>
                   </div>
-                  <p className="font-body text-xs text-white/60 leading-relaxed">{r.desc}</p>
+                  <h4 className="font-display font-bold text-white text-sm">Предприниматель и наставник</h4>
                 </div>
-              ))}
+                <p className="font-body text-white/60 text-sm leading-relaxed">
+                  Я предприниматель и наставник по заработку на Авито. Начал с полного нуля — без опыта,
+                  связей и капитала. Самостоятельно изучил площадку, нашёл рабочие схемы и ушёл из найма.
+                </p>
+              </div>
+
+              <div className="card-glass rounded-2xl border border-white/10 p-6 hover:border-[#DC2626]/20 transition-colors">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded-xl bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#D4AF37] text-sm">02</span>
+                  </div>
+                  <h4 className="font-display font-bold text-white text-sm">Мои результаты</h4>
+                </div>
+                <p className="font-body text-white/60 text-sm leading-relaxed">
+                  Вышел на стабильный доход{' '}
+                  <span className="text-gradient-gold font-bold">300 000 ₽+</span> в месяц и выстроил понятную,
+                  системную модель заработка. Сегодня обучаю людей запускаться и зарабатывать на Авито.
+                </p>
+              </div>
+
+              <div className="card-glass rounded-2xl border border-white/10 p-6 hover:border-[#DC2626]/20 transition-colors">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 rounded-xl bg-[#DC2626]/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#DC2626] text-sm">03</span>
+                  </div>
+                  <h4 className="font-display font-bold text-white text-sm">Только практика</h4>
+                </div>
+                <p className="font-body text-white/60 text-sm leading-relaxed">
+                  Я не даю теорию — только практику, проверенные стратегии и пошаговые действия,
+                  которые приводят к реальным деньгам.
+                </p>
+              </div>
             </div>
           </div>
         </div>
