@@ -96,35 +96,50 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[#D4AF37] opacity-10 blur-[120px] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-24 sm:pt-20">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-3xl mx-auto pt-24 sm:pt-20">
         {/* Badge */}
-        <div className="flex justify-center mb-6 sm:mb-8">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[#DC2626]/30 bg-[#DC2626]/10 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-[#DC2626] animate-pulse" />
-            <span className="text-xs font-body text-[#DC2626] font-medium tracking-wide">
-              Набор открыт · Осталось 12 мест
-            </span>
+        <div className="flex justify-center mb-8">
+          <div className="px-6 py-2.5 rounded-full bg-[#DC2626] text-white font-display font-bold tracking-widest text-xs sm:text-sm uppercase">
+            Авторская программа от AHMA SALES
           </div>
         </div>
 
         {/* Main heading */}
-        <h1 className="font-display font-black leading-[0.95] mb-6">
-          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-white mb-2">
-            Зарабатывай на
+        <h1 className="font-display font-black leading-[1.05] mb-4">
+          <span className="block text-3xl sm:text-5xl md:text-6xl text-white uppercase">
+            Полный курс по заработку на
           </span>
-          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-red">
-            Авито
-          </span>
-          <span className="block text-3xl sm:text-5xl md:text-7xl lg:text-8xl text-gradient-white">
-            от 100 000 ₽/мес
+          <span className="block text-3xl sm:text-5xl md:text-6xl text-[#DC2626] uppercase">
+            Авито с нуля
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="font-body text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Практический курс с живым наставником. Реальные схемы, конкретные ниши
-          и пошаговый план — от нуля до стабильного дохода за 21 день.
+        <p className="font-body text-base sm:text-lg text-white/70 max-w-xl mx-auto mb-10 leading-relaxed">
+          Как зарабатывать на Авито от 100&nbsp;000&nbsp;₽/мес?
         </p>
+
+        {/* Checklist */}
+        <div className="flex flex-col gap-3 text-left max-w-sm mx-auto mb-10">
+          {[
+            'Без долгих обучений и больших вложений',
+            'С полного нуля, без опыта',
+            'Можно совмещать с работой и выйти на первый доход',
+            'Возраст не важен — обучиться может каждый с 15 до 60 лет',
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3"
+            >
+              <span className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-md bg-[#DC2626] flex items-center justify-center">
+                <svg width="14" height="11" viewBox="0 0 14 11" fill="none">
+                  <path d="M1 5.5L5 9.5L13 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+              <span className="font-body text-sm sm:text-base text-white/90 leading-snug">{item}</span>
+            </div>
+          ))}
+        </div>
 
         {/* CTA button */}
         <a
