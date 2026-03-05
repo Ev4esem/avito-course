@@ -306,10 +306,14 @@ function PlanCard({ plan }: { plan: Plan }) {
           {hasMore && (
             <button
               onClick={() => setExpanded(!expanded)}
-              className="flex items-center gap-2 mt-2 group"
-              style={{ color: plan.color }}
+              className="flex items-center justify-center gap-2 mt-3 w-full py-2 rounded-xl font-body text-sm font-semibold transition-all"
+              style={{
+                color: plan.color,
+                background: plan.color + '15',
+                border: `1px solid ${plan.color}40`,
+              }}
             >
-              <span className="font-body text-sm font-medium">
+              <span>
                 {expanded
                   ? 'Свернуть'
                   : `Ещё ${plan.features.length - plan.previewCount} пункт${
