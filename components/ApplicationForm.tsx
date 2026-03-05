@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 
-export default function ApplicationForm() {
+export default function ApplicationForm({ initialTariff }: { initialTariff?: string }) {
   const [form, setForm] = useState({
     name: '',
     phone: '',
-    tariff: 'Полноценный',
+    tariff: initialTariff || 'Полноценный',
     goal: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -119,7 +119,7 @@ export default function ApplicationForm() {
                       onChange={handleChange}
                       className="w-full bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl px-4 py-3.5 font-body text-white focus:outline-none focus:border-[#DC2626]/50 transition-colors appearance-none cursor-pointer pr-10"
                     >
-                      <option value="Базовый">Базовый — 4 990 ₽</option>
+                      <option value="Базовый">Базовый — 5 000 ₽</option>
                       <option value="Полноценный">Полноценный — 7 490 ₽</option>
                       <option value="VIP">VIP — 19 990 ₽</option>
                       <option value="Личное наставничество">Личное наставничество — 49 990 ₽</option>

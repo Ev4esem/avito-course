@@ -8,7 +8,6 @@ import Guarantee from '@/components/Guarantee';
 import Pricing from '@/components/Pricing';
 import ThreePaths from '@/components/ThreePaths';
 import FAQ from '@/components/FAQ';
-import ApplicationForm from '@/components/ApplicationForm';
 import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
 
@@ -41,7 +40,6 @@ export default function Home() {
       <Pricing />
       <ThreePaths />
       <FAQ />
-      <ApplicationForm />
       <Footer />
     </main>
   );

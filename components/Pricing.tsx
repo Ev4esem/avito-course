@@ -36,7 +36,7 @@ const LEVEL_COLORS: Record<number, string> = {
 const plans: Plan[] = [
   {
     name: 'Базовый',
-    price: '4 990',
+    price: '5 000',
     subtitle: 'Формат самостоятельного обучения для тех, кто хочет освоить профессию «Авитолог» в удобном темпе без личного сопровождения Ахмада.',
     color: '#8A8A8A',
     level: 0,
@@ -259,6 +259,7 @@ function PlanCard({ plan }: { plan: Plan }) {
           {shown.map((feature, j) => {
             const highlightColor = LEVEL_COLORS[feature.addedAt] || '';
             const isHighlighted = feature.addedAt > 0 && !!highlightColor;
+            const iconColor = isHighlighted ? highlightColor : '#6B6B6B';
             return (
               <div key={j} className="flex items-start gap-3">
                 <div
@@ -266,13 +267,13 @@ function PlanCard({ plan }: { plan: Plan }) {
                   style={{
                     background: isHighlighted
                       ? highlightColor + '40'
-                      : plan.color + '20',
+                      : 'rgba(107,107,107,0.15)',
                   }}
                 >
                   <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                     <path
                       d="M1 4L3.5 6.5L9 1"
-                      stroke={isHighlighted ? highlightColor : plan.color}
+                      stroke={iconColor}
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -340,7 +341,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 
         {/* CTA */}
         <a
-          href="#apply"
+          href={`/apply?tariff=${encodeURIComponent(plan.name)}`}
           className={`mt-6 block text-center py-4 rounded-2xl font-display text-sm font-bold tracking-wide transition-all ${getCtaClass(plan)}`}
         >
           {getCtaText(plan)}
