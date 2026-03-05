@@ -51,7 +51,7 @@ const plans: Plan[] = [
     level: 1,
     popular: true,
     isDiamond: false,
-    badge: '🔥 Хит продаж',
+
     previewCount: 4,
     features: [
       { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
@@ -75,7 +75,7 @@ const plans: Plan[] = [
     level: 2,
     popular: false,
     isDiamond: false,
-    badge: '👑 VIP',
+
     previewCount: 4,
     features: [
       { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
@@ -101,7 +101,7 @@ const plans: Plan[] = [
     level: 3,
     popular: false,
     isDiamond: true,
-    badge: '💎 Максимум',
+
     previewCount: 4,
     features: [
       { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
@@ -270,7 +270,7 @@ function PlanCard({ plan }: { plan: Plan }) {
                   <span
                     className="font-body text-sm leading-snug font-semibold"
                     style={{
-                      color: 'rgba(255,255,255,0.95)',
+                      color: 'rgba(255,255,255,0.75)',
                       background: plan.color + (plan.isDiamond ? '35' : '30'),
                       borderRadius: '8px',
                       padding: '2px 8px',
