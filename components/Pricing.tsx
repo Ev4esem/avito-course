@@ -203,10 +203,10 @@ function PlanCard({ plan }: { plan: Plan }) {
                 style={
                   feature.isNew
                     ? {
-                        color: plan.color,
-                        textDecoration: 'underline',
-                        textDecorationColor: plan.color,
-                        textUnderlineOffset: '3px',
+                        color: '#000000',
+                        background: plan.color,
+                        borderRadius: '3px',
+                        padding: '1px 5px',
                         fontWeight: 600,
                       }
                     : { color: 'rgba(255,255,255,0.75)' }
