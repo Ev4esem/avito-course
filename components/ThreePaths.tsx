@@ -105,7 +105,7 @@ export default function ThreePaths() {
         {/* CTA button */}
         <div className="text-center reveal">
           <a
-            href="#apply"
+            href="#pricing"
             className="btn-primary inline-block px-12 py-5 rounded-2xl font-display text-base font-bold tracking-wide shadow-[0_8px_40px_rgba(220,38,38,0.5)]"
           >
             Вступить в курс →
