@@ -44,23 +44,25 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#DC2626]/3 to-transparent" />
 
       <div className="max-w-4xl mx-auto relative">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-4 reveal">
-            <div className="w-8 h-px bg-[#DC2626]" />
-            <span className="font-display text-xs text-[#DC2626] tracking-widest uppercase">Запись на курс</span>
-            <div className="w-8 h-px bg-[#DC2626]" />
+        {/* Header — скрывается после отправки */}
+        {status !== 'success' && (
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4 reveal">
+              <div className="w-8 h-px bg-[#DC2626]" />
+              <span className="font-display text-xs text-[#DC2626] tracking-widest uppercase">Запись на курс</span>
+              <div className="w-8 h-px bg-[#DC2626]" />
+            </div>
+            <h2 className="font-display font-black text-4xl md:text-6xl text-white leading-tight mb-4 reveal">
+              Оставь заявку
+              <br />
+              <span className="text-gradient-red">прямо сейчас</span>
+            </h2>
+            <p className="font-body text-white/60 max-w-lg mx-auto reveal">
+              Заполни форму и мы свяжемся с тобой в течение дня.
+              Осталось <span className="text-[#DC2626] font-medium">12 мест</span> на ближайший поток.
+            </p>
           </div>
-          <h2 className="font-display font-black text-4xl md:text-6xl text-white leading-tight mb-4 reveal">
-            Оставь заявку
-            <br />
-            <span className="text-gradient-red">прямо сейчас</span>
-          </h2>
-          <p className="font-body text-white/60 max-w-lg mx-auto reveal">
-            Заполни форму и мы свяжемся с тобой в течение 30 минут.
-            Осталось <span className="text-[#DC2626] font-medium">12 мест</span> на ближайший поток.
-          </p>
-        </div>
+        )}
 
         {/* Form card */}
         <div className="gradient-border rounded-3xl p-0.5 reveal">
@@ -70,7 +72,7 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
                 <div className="text-6xl mb-4">🎉</div>
                 <h3 className="font-display font-bold text-2xl text-white mb-2">Заявка принята!</h3>
                 <p className="font-body text-white/60">
-                  Мы свяжемся с тобой в течение 30 минут.
+                  Свяжемся с тобой в течение дня.
                 </p>
               </div>
             ) : (

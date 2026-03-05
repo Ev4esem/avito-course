@@ -133,16 +133,16 @@ const plans: Plan[] = [
 
 function getCardClass(plan: Plan): string {
   if (plan.isDiamond) {
-    return 'bg-gradient-to-b from-[#0A2A35] via-[#0D1F2D] to-[#0A0A0A] border-[#67E8F9]/50';
+    return 'bg-gradient-to-b from-[#0D2F3F] via-[#122535] to-[#1A1A1A] border-[#67E8F9]/50';
   }
   if (plan.popular) {
-    return 'bg-gradient-to-b from-[#DC2626]/10 to-[#111111] border-[#DC2626]/40 glow-red';
+    return 'bg-gradient-to-b from-[#DC2626]/15 to-[#1C1C1C] border-[#DC2626]/40 glow-red';
   }
   if (plan.level === 2) {
-    return 'bg-gradient-to-b from-[#D4AF37]/10 to-[#111111] border-[#D4AF37]/40 glow-gold';
+    return 'bg-gradient-to-b from-[#D4AF37]/15 to-[#1C1C1C] border-[#D4AF37]/40 glow-gold';
   }
-  // Базовый — чуть светлее фона
-  return 'bg-[#181818] border-[#2A2A2A] hover:border-[#3A3A3A]';
+  // Базовый
+  return 'bg-[#1E1E1E] border-[#323232] hover:border-[#444444]';
 }
 
 function getBadgeStyle(plan: Plan) {
