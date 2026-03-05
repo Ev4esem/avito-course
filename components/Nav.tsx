@@ -16,7 +16,6 @@ export default function Nav() {
     { href: '#about', label: 'Об авторе' },
     { href: '#learn', label: 'Программа' },
     { href: '#pricing', label: 'Тарифы' },
-    { href: '/apply', label: 'Заявка' },
   ];
 
   return (
@@ -51,7 +50,7 @@ export default function Nav() {
 
         {/* CTA */}
         <a
-          href="/apply"
+          href="#pricing"
           className="hidden md:block btn-primary px-5 py-2.5 rounded-xl font-display text-xs font-bold tracking-wide"
         >
           Занять место →
@@ -86,7 +85,7 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="/apply"
+            href="#pricing"
             onClick={() => setMenuOpen(false)}
             className="btn-primary px-5 py-3 rounded-xl font-display text-xs font-bold text-center tracking-wide"
           >

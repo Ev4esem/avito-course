@@ -143,7 +143,7 @@ export default function Hero() {
 
         {/* CTA button */}
         <a
-          href="/apply"
+          href="#pricing"
           className="btn-primary px-10 py-4 rounded-2xl font-display text-sm font-bold tracking-wide inline-block text-center"
         >
           Занять место →
