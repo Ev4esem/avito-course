@@ -13,9 +13,9 @@ export default function Nav() {
   }, []);
 
   const links = [
-    { href: '#about', label: 'Об авторе' },
-    { href: '#learn', label: 'Программа' },
-    { href: '#pricing', label: 'Тарифы' },
+    { href: '/#about', label: 'Об авторе' },
+    { href: '/#learn', label: 'Программа' },
+    { href: '/#pricing', label: 'Тарифы' },
   ];
 
   return (
@@ -26,7 +26,7 @@ export default function Nav() {
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#DC2626] to-[#D4AF37] flex items-center justify-center">
             <span className="font-display text-xs font-bold text-white">АП</span>
           </div>
@@ -50,7 +50,7 @@ export default function Nav() {
 
         {/* CTA */}
         <a
-          href="#pricing"
+          href="/#pricing"
           className="hidden md:block btn-primary px-5 py-2.5 rounded-xl font-display text-xs font-bold tracking-wide"
         >
           Занять место →
@@ -85,7 +85,7 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#pricing"
+            href="/#pricing"
             onClick={() => setMenuOpen(false)}
             className="btn-primary px-5 py-3 rounded-xl font-display text-xs font-bold text-center tracking-wide"
           >
