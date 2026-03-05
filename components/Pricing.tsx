@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 
+// addedAt: на каком уровне тарифа добавился пункт
+// 0 = базовый, 1 = полноценный, 2 = vip, 3 = максимум
 type Feature = {
   text: string;
-  isNew?: boolean;
+  addedAt: number;
 };
 
 interface Plan {
@@ -12,28 +14,33 @@ interface Plan {
   price: string;
   subtitle: string;
   color: string;
+  level: number; // 0–3
   popular: boolean;
-  isVip: boolean;
+  isDiamond: boolean;
   badge?: string;
   features: Feature[];
-  previewCount: number; // how many items to show before "show more"
+  previewCount: number;
 }
+
+// Цвет бриллиантового тарифа
+const DIAMOND_COLOR = '#67E8F9';
 
 const plans: Plan[] = [
   {
     name: 'Базовый',
     price: '4 990',
     subtitle: 'Формат самостоятельного обучения для тех, кто хочет освоить профессию «Авитолог» в удобном темпе без личного сопровождения Ахмада.',
-    color: '#6B6B6B',
+    color: '#8A8A8A',
+    level: 0,
     popular: false,
-    isVip: false,
+    isDiamond: false,
     previewCount: 3,
     features: [
-      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей' },
-      { text: 'Общая продолжительность обучения — 21 день' },
-      { text: 'Доступ к чату единомышленников для общения, обмена опытом и поддержки' },
-      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями' },
-      { text: 'Доступ ко всем материалам курса сроком на 6 месяцев с момента начала обучения' },
+      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
+      { text: 'Общая продолжительность обучения — 21 день', addedAt: 0 },
+      { text: 'Доступ к чату единомышленников для общения, обмена опытом и поддержки', addedAt: 0 },
+      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями', addedAt: 0 },
+      { text: 'Доступ ко всем материалам курса сроком на 6 месяцев с момента начала обучения', addedAt: 0 },
     ],
   },
   {
@@ -41,22 +48,23 @@ const plans: Plan[] = [
     price: '7 490',
     subtitle: 'Формат обучения с поддержкой куратора и участием Ахмада для тех, кто хочет прийти к результату быстрее и увереннее.',
     color: '#DC2626',
+    level: 1,
     popular: true,
-    isVip: false,
+    isDiamond: false,
     badge: '🔥 Хит продаж',
     previewCount: 4,
     features: [
-      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей' },
-      { text: 'Общая продолжительность обучения — 21 день' },
-      { text: 'Доступ к чату единомышленников для общения и обмена опытом' },
-      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями' },
-      { text: 'Обратная связь от куратора на протяжении всего периода обучения', isNew: true },
-      { text: 'Три онлайн-встречи в неделю с кураторами для выполнения практических заданий и достижения конкретных результатов', isNew: true },
-      { text: 'Одна онлайн-встреча с автором курса Ахмадом, на которой он пошагово разбирает стратегию выхода на результат', isNew: true },
-      { text: 'Сертификат о получении квалификации «Авитолог» после успешного завершения обучения', isNew: true },
-      { text: 'Доступ к закрытому каналу с Ахмадом и учениками после завершения обучения', isNew: true },
-      { text: 'Доступ ко всем материалам курса сроком на 1 год', isNew: true },
-      { text: 'Гарантия результата с возможностью 100% возврата денежных средств при соблюдении условий обучения', isNew: true },
+      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
+      { text: 'Общая продолжительность обучения — 21 день', addedAt: 0 },
+      { text: 'Доступ к чату единомышленников для общения и обмена опытом', addedAt: 0 },
+      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями', addedAt: 0 },
+      { text: 'Обратная связь от куратора на протяжении всего периода обучения', addedAt: 1 },
+      { text: 'Три онлайн-встречи в неделю с кураторами для выполнения практических заданий и достижения конкретных результатов', addedAt: 1 },
+      { text: 'Одна онлайн-встреча с автором курса Ахмадом, на которой он пошагово разбирает стратегию выхода на результат', addedAt: 1 },
+      { text: 'Сертификат о получении квалификации «Авитолог» после успешного завершения обучения', addedAt: 1 },
+      { text: 'Доступ к закрытому каналу с Ахмадом и учениками после завершения обучения', addedAt: 1 },
+      { text: 'Доступ ко всем материалам курса сроком на 1 год', addedAt: 1 },
+      { text: 'Гарантия результата с возможностью 100% возврата денежных средств при соблюдении условий обучения', addedAt: 1 },
     ],
   },
   {
@@ -64,54 +72,115 @@ const plans: Plan[] = [
     price: '19 990',
     subtitle: 'Формат углубленного обучения с личным участием Ахмада и расширенной персональной поддержкой.',
     color: '#D4AF37',
+    level: 2,
     popular: false,
-    isVip: true,
+    isDiamond: false,
     badge: '👑 VIP',
     previewCount: 4,
     features: [
-      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей' },
-      { text: 'Общая продолжительность обучения — 21 день' },
-      { text: 'Обратная связь от куратора на протяжении всего периода обучения' },
-      { text: 'Доступ к чату единомышленников для общения и обмена опытом' },
-      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями' },
-      { text: 'Три онлайн-встречи в неделю с кураторами для выполнения практических заданий' },
-      { text: 'Одна онлайн-встреча с автором курса Ахмадом, где он пошагово разбирает стратегию достижения результата' },
-      { text: 'Сертификат о получении квалификации «Авитолог»' },
-      { text: 'Доступ к закрытому каналу с Ахмадом и учениками после завершения обучения' },
-      { text: 'Доступ ко всем материалам курса сроком на 1 год' },
-      { text: 'Гарантия результата с возможностью 100% возврата денежных средств при соблюдении условий обучения' },
-      { text: 'Личный чат с Ахмадом с возможностью задавать вопросы напрямую', isNew: true },
-      { text: 'Три персональных онлайн-разбора с Ахмадом в течение обучения', isNew: true },
+      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
+      { text: 'Общая продолжительность обучения — 21 день', addedAt: 0 },
+      { text: 'Доступ к чату единомышленников для общения и обмена опытом', addedAt: 0 },
+      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями', addedAt: 0 },
+      { text: 'Обратная связь от куратора на протяжении всего периода обучения', addedAt: 1 },
+      { text: 'Три онлайн-встречи в неделю с кураторами для выполнения практических заданий', addedAt: 1 },
+      { text: 'Одна онлайн-встреча с автором курса Ахмадом, где он пошагово разбирает стратегию достижения результата', addedAt: 1 },
+      { text: 'Сертификат о получении квалификации «Авитолог»', addedAt: 1 },
+      { text: 'Доступ к закрытому каналу с Ахмадом и учениками после завершения обучения', addedAt: 1 },
+      { text: 'Доступ ко всем материалам курса сроком на 1 год', addedAt: 1 },
+      { text: 'Гарантия результата с возможностью 100% возврата денежных средств при соблюдении условий обучения', addedAt: 1 },
+      { text: 'Личный чат с Ахмадом с возможностью задавать вопросы напрямую', addedAt: 2 },
+      { text: 'Три персональных онлайн-разбора с Ахмадом в течение обучения', addedAt: 2 },
     ],
   },
   {
     name: 'Личное наставничество',
     price: '49 990',
     subtitle: 'Формат индивидуальной работы с Ахмадом и сопровождения до результата.',
-    color: '#EF4444',
+    color: DIAMOND_COLOR,
+    level: 3,
     popular: false,
-    isVip: false,
-    badge: '⚡ Максимум',
+    isDiamond: true,
+    badge: '💎 Максимум',
     previewCount: 4,
     features: [
-      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей' },
-      { text: 'Общая продолжительность обучения — 21 день' },
-      { text: 'Обратная связь от куратора на протяжении всего периода обучения' },
-      { text: 'Доступ к чату единомышленников' },
-      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями' },
-      { text: 'Три онлайн-встречи в неделю с кураторами для выполнения практических заданий' },
-      { text: 'Одна онлайн-встреча с автором курса Ахмадом с подробным пошаговым разбором стратегии выхода на результат' },
-      { text: 'Сертификат о получении квалификации «Авитолог»' },
-      { text: 'Доступ к закрытому каналу с Ахмадом и учениками после завершения обучения' },
-      { text: 'Доступ ко всем материалам курса сроком на 1 год' },
-      { text: 'Гарантия результата с возможностью 100% возврата денежных средств при соблюдении условий обучения' },
-      { text: 'Личный чат с Ахмадом с возможностью задавать вопросы напрямую' },
-      { text: 'Три персональных онлайн-разбора с Ахмадом в течение обучения' },
-      { text: 'Личное сопровождение Ахмада в течение 6 месяцев после завершения обучения', isNew: true },
-      { text: 'Личная встреча с Ахмадом', isNew: true },
+      { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
+      { text: 'Общая продолжительность обучения — 21 день', addedAt: 0 },
+      { text: 'Доступ к чату единомышленников', addedAt: 0 },
+      { text: 'Доступ к новостному каналу с дополнительными материалами и активностями', addedAt: 0 },
+      { text: 'Обратная связь от куратора на протяжении всего периода обучения', addedAt: 1 },
+      { text: 'Три онлайн-встречи в неделю с кураторами для выполнения практических заданий', addedAt: 1 },
+      { text: 'Одна онлайн-встреча с автором курса Ахмадом с подробным пошаговым разбором стратегии выхода на результат', addedAt: 1 },
+      { text: 'Сертификат о получении квалификации «Авитолог»', addedAt: 1 },
+      { text: 'Доступ к закрытому каналу с Ахмадом и учениками после завершения обучения', addedAt: 1 },
+      { text: 'Доступ ко всем материалам курса сроком на 1 год', addedAt: 1 },
+      { text: 'Гарантия результата с возможностью 100% возврата денежных средств при соблюдении условий обучения', addedAt: 1 },
+      { text: 'Личный чат с Ахмадом с возможностью задавать вопросы напрямую', addedAt: 2 },
+      { text: 'Три персональных онлайн-разбора с Ахмадом в течение обучения', addedAt: 2 },
+      { text: 'Личное сопровождение Ахмада в течение 6 месяцев после завершения обучения', addedAt: 3 },
+      { text: 'Личная встреча с Ахмадом', addedAt: 3 },
     ],
   },
 ];
+
+function getCardClass(plan: Plan): string {
+  if (plan.isDiamond) {
+    return 'bg-gradient-to-b from-[#0A2A35] via-[#0D1F2D] to-[#0A0A0A] border-[#67E8F9]/50';
+  }
+  if (plan.popular) {
+    return 'bg-gradient-to-b from-[#DC2626]/10 to-[#111111] border-[#DC2626]/40 glow-red';
+  }
+  if (plan.level === 2) {
+    return 'bg-gradient-to-b from-[#D4AF37]/10 to-[#111111] border-[#D4AF37]/40 glow-gold';
+  }
+  // Базовый — чуть светлее фона
+  return 'bg-[#181818] border-[#2A2A2A] hover:border-[#3A3A3A]';
+}
+
+function getBadgeStyle(plan: Plan) {
+  if (plan.isDiamond) {
+    return {
+      background: 'linear-gradient(135deg, #22D3EE, #67E8F9, #A5F3FC)',
+      color: '#0A1A20',
+    };
+  }
+  if (plan.level === 2) {
+    return {
+      background: 'linear-gradient(135deg, #D4AF37, #F5D76E)',
+      color: '#0A0A0A',
+    };
+  }
+  if (plan.popular) {
+    return {
+      background: 'linear-gradient(135deg, #DC2626, #EF4444)',
+      color: '#fff',
+    };
+  }
+  return {
+    background: 'rgba(239,68,68,0.15)',
+    color: '#fff',
+  };
+}
+
+function getCtaClass(plan: Plan): string {
+  if (plan.isDiamond) {
+    return 'bg-gradient-to-r from-[#22D3EE] to-[#67E8F9] text-[#0A1A20] font-black hover:shadow-[0_8px_40px_rgba(103,232,249,0.4)] hover:-translate-y-0.5';
+  }
+  if (plan.popular) {
+    return 'btn-primary';
+  }
+  if (plan.level === 2) {
+    return 'bg-gradient-to-r from-[#D4AF37] to-[#F5D76E] text-black hover:shadow-[0_8px_40px_rgba(212,175,55,0.4)] hover:-translate-y-0.5';
+  }
+  return 'border border-white/20 text-white/70 hover:text-white hover:border-white/40';
+}
+
+function getCtaText(plan: Plan): string {
+  if (plan.isDiamond) return 'Занять место →';
+  if (plan.level === 2) return 'Занять место →';
+  if (plan.popular) return 'Занять место →';
+  return 'Занять место →';
+}
 
 function PlanCard({ plan }: { plan: Plan }) {
   const [expanded, setExpanded] = useState(false);
@@ -120,27 +189,21 @@ function PlanCard({ plan }: { plan: Plan }) {
 
   return (
     <div
-      className={`relative flex flex-col rounded-3xl border transition-all duration-300 hover:-translate-y-1 overflow-hidden ${
-        plan.popular
-          ? 'bg-gradient-to-b from-[#DC2626]/10 to-[#111111] border-[#DC2626]/40 glow-red'
-          : plan.isVip
-          ? 'bg-gradient-to-b from-[#D4AF37]/10 to-[#111111] border-[#D4AF37]/40 glow-gold'
-          : 'card-glass border-[#1E1E1E] hover:border-[#2E2E2E]'
-      }`}
+      className={`relative flex flex-col rounded-3xl border transition-all duration-300 hover:-translate-y-1 overflow-hidden ${getCardClass(plan)}`}
     >
+      {/* Diamond glow overlay */}
+      {plan.isDiamond && (
+        <div className="absolute inset-0 pointer-events-none rounded-3xl"
+          style={{ boxShadow: 'inset 0 0 60px rgba(103,232,249,0.07), 0 0 40px rgba(103,232,249,0.12)' }}
+        />
+      )}
+
       {/* Badge */}
       {plan.badge && (
         <div className="absolute top-4 right-4">
           <div
             className="px-3 py-1.5 rounded-full font-display text-xs font-bold"
-            style={{
-              background: plan.isVip
-                ? 'linear-gradient(135deg, #D4AF37, #F5D76E)'
-                : plan.popular
-                ? 'linear-gradient(135deg, #DC2626, #EF4444)'
-                : 'rgba(239,68,68,0.15)',
-              color: plan.isVip ? '#0A0A0A' : '#fff',
-            }}
+            style={getBadgeStyle(plan)}
           >
             {plan.badge}
           </div>
@@ -162,13 +225,16 @@ function PlanCard({ plan }: { plan: Plan }) {
         {/* Price */}
         <div className="mb-6">
           <div className="flex items-end gap-2">
-            <span
-              className={`font-display font-black text-4xl ${
-                plan.isVip ? 'text-gradient-gold' : 'text-white'
-              }`}
-            >
-              {plan.price}
-            </span>
+            {plan.level === 2 && !plan.isDiamond ? (
+              <span className="font-display font-black text-4xl text-gradient-gold">{plan.price}</span>
+            ) : (
+              <span
+                className="font-display font-black text-4xl"
+                style={{ color: plan.isDiamond ? DIAMOND_COLOR : 'white' }}
+              >
+                {plan.price}
+              </span>
+            )}
             <span className="font-body text-white/60 mb-1">₽</span>
           </div>
           <div className="font-body text-xs text-white/40 mt-1">единоразово</div>
@@ -177,45 +243,50 @@ function PlanCard({ plan }: { plan: Plan }) {
         {/* Divider */}
         <div
           className="w-full h-px mb-5"
-          style={{ background: `linear-gradient(90deg, ${plan.color}40, transparent)` }}
+          style={{ background: `linear-gradient(90deg, ${plan.color}50, transparent)` }}
         />
 
         {/* Features */}
         <div className="flex flex-col gap-3 flex-grow">
-          {shown.map((feature, j) => (
-            <div key={j} className="flex items-start gap-3">
-              <div
-                className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
-                style={{ background: feature.isNew ? plan.color + '40' : plan.color + '25' }}
-              >
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                  <path
-                    d="M1 4L3.5 6.5L9 1"
-                    stroke={plan.color}
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+          {shown.map((feature, j) => {
+            const isHighlighted = feature.addedAt > 0;
+            return (
+              <div key={j} className="flex items-start gap-3">
+                <div
+                  className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                  style={{ background: isHighlighted ? plan.color + '45' : plan.color + '20' }}
+                >
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                    <path
+                      d="M1 4L3.5 6.5L9 1"
+                      stroke={plan.color}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+                {isHighlighted ? (
+                  <span
+                    className="font-body text-sm leading-snug font-semibold"
+                    style={{
+                      color: 'rgba(255,255,255,0.95)',
+                      background: plan.color + (plan.isDiamond ? '35' : '30'),
+                      borderRadius: '8px',
+                      padding: '2px 8px',
+                      boxShadow: `0 0 8px ${plan.color}20`,
+                    }}
+                  >
+                    {feature.text}
+                  </span>
+                ) : (
+                  <span className="font-body text-sm text-white/60 leading-snug">
+                    {feature.text}
+                  </span>
+                )}
               </div>
-              <span
-                className="font-body text-sm leading-snug"
-                style={
-                  feature.isNew
-                    ? {
-                        color: '#000000',
-                        background: plan.color,
-                        borderRadius: '3px',
-                        padding: '1px 5px',
-                        fontWeight: 600,
-                      }
-                    : { color: 'rgba(255,255,255,0.75)' }
-                }
-              >
-                {feature.text}
-              </span>
-            </div>
-          ))}
+            );
+          })}
 
           {/* Toggle */}
           {hasMore && (
@@ -257,21 +328,9 @@ function PlanCard({ plan }: { plan: Plan }) {
         {/* CTA */}
         <a
           href="#apply"
-          className={`mt-6 block text-center py-4 rounded-2xl font-display text-sm font-bold tracking-wide transition-all ${
-            plan.popular
-              ? 'btn-primary'
-              : plan.isVip
-              ? 'bg-gradient-to-r from-[#D4AF37] to-[#F5D76E] text-black hover:shadow-[0_8px_40px_rgba(212,175,55,0.4)] hover:-translate-y-0.5'
-              : 'border border-white/20 text-white/70 hover:text-white hover:border-white/40'
-          }`}
+          className={`mt-6 block text-center py-4 rounded-2xl font-display text-sm font-bold tracking-wide transition-all ${getCtaClass(plan)}`}
         >
-          {plan.name === 'Личное наставничество'
-            ? 'Записаться →'
-            : plan.isVip
-            ? 'Выбрать VIP →'
-            : plan.popular
-            ? 'Выбрать этот тариф →'
-            : 'Записаться →'}
+          {getCtaText(plan)}
         </a>
       </div>
     </div>
@@ -283,6 +342,7 @@ export default function Pricing() {
     <section id="pricing" className="py-24 px-6 relative overflow-hidden">
       {/* Glow */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#DC2626] opacity-5 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] rounded-full bg-[#67E8F9] opacity-3 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
