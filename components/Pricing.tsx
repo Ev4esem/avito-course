@@ -25,6 +25,14 @@ interface Plan {
 // Цвет бриллиантового тарифа
 const DIAMOND_COLOR = '#67E8F9';
 
+// Цвет подсветки по уровню тарифа, в котором пункт ВПЕРВЫЕ появился
+const LEVEL_COLORS: Record<number, string> = {
+  0: '',           // базовый — без подсветки
+  1: '#DC2626',    // полноценный — красный
+  2: '#D4AF37',    // VIP — золото
+  3: DIAMOND_COLOR, // личное наставничество — голубой
+};
+
 const plans: Plan[] = [
   {
     name: 'Базовый',
@@ -249,17 +257,22 @@ function PlanCard({ plan }: { plan: Plan }) {
         {/* Features */}
         <div className="flex flex-col gap-3 flex-grow">
           {shown.map((feature, j) => {
-            const isHighlighted = feature.addedAt > 0;
+            const highlightColor = LEVEL_COLORS[feature.addedAt] || '';
+            const isHighlighted = feature.addedAt > 0 && !!highlightColor;
             return (
               <div key={j} className="flex items-start gap-3">
                 <div
                   className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
-                  style={{ background: isHighlighted ? plan.color + '45' : plan.color + '20' }}
+                  style={{
+                    background: isHighlighted
+                      ? highlightColor + '40'
+                      : plan.color + '20',
+                  }}
                 >
                   <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                     <path
                       d="M1 4L3.5 6.5L9 1"
-                      stroke={plan.color}
+                      stroke={isHighlighted ? highlightColor : plan.color}
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -270,11 +283,11 @@ function PlanCard({ plan }: { plan: Plan }) {
                   <span
                     className="font-body text-sm leading-snug font-semibold"
                     style={{
-                      color: 'rgba(255,255,255,0.75)',
-                      background: plan.color + (plan.isDiamond ? '35' : '30'),
+                      color: 'rgba(255,255,255,0.85)',
+                      background: highlightColor + '25',
                       borderRadius: '8px',
                       padding: '2px 8px',
-                      boxShadow: `0 0 8px ${plan.color}20`,
+                      boxShadow: `0 0 8px ${highlightColor}18`,
                     }}
                   >
                     {feature.text}
