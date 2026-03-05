@@ -126,21 +126,6 @@ export default function Hero() {
           и пошаговый план — от нуля до стабильного дохода за 21 день.
         </p>
 
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#apply"
-            className="btn-primary px-8 py-4 rounded-2xl font-display text-sm font-bold tracking-wide inline-block text-center"
-          >
-            Оставить заявку на курс →
-          </a>
-          <a
-            href="#learn"
-            className="px-8 py-4 rounded-2xl font-display text-sm font-bold tracking-wide border border-white/15 text-white/70 hover:text-white hover:border-white/30 transition-all inline-block text-center"
-          >
-            Смотреть программу
-          </a>
-        </div>
       </div>
 
       {/* Scroll indicator */}

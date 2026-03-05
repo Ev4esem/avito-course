@@ -54,7 +54,7 @@ export default function Nav() {
           href="#apply"
           className="hidden md:block btn-primary px-5 py-2.5 rounded-xl font-display text-xs font-bold tracking-wide"
         >
-          Оставить заявку →
+          Занять место →
         </a>
 
         {/* Burger */}
@@ -90,7 +90,7 @@ export default function Nav() {
             onClick={() => setMenuOpen(false)}
             className="btn-primary px-5 py-3 rounded-xl font-display text-xs font-bold text-center tracking-wide"
           >
-            Оставить заявку →
+            Занять место →
           </a>
         </div>
       </div>

@@ -129,7 +129,7 @@ export default function About() {
             href="#apply"
             className="btn-primary inline-block px-10 py-4 rounded-2xl font-display text-base font-bold tracking-wide shadow-[0_8px_40px_rgba(220,38,38,0.5)]"
           >
-            Оставить заявку →
+            Занять место →
           </a>
         </div>
       </div>
