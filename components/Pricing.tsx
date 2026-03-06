@@ -12,6 +12,9 @@ type Feature = {
 interface Plan {
   name: string;
   price: string;
+  oldPrice: string;
+  seats: string;
+  seatsUrgent?: string;
   subtitle: string;
   color: string;
   level: number; // 0–3
@@ -37,7 +40,9 @@ const plans: Plan[] = [
   {
     name: 'Базовый',
     price: '5 000',
-    subtitle: 'Формат самостоятельного обучения для тех, кто хочет освоить профессию «Авитолог» в удобном темпе без личного сопровождения Ахмада.',
+    oldPrice: '10 000',
+    seats: '∞ мест',
+    subtitle: 'Старт в своём темпе без куратора. Подходит тем, кто хочет разобраться в профессии «Авитолог» самостоятельно.',
     color: '#8A8A8A',
     level: 0,
     popular: false,
@@ -54,12 +59,14 @@ const plans: Plan[] = [
   {
     name: 'Полноценный',
     price: '7 490',
-    subtitle: 'Формат обучения с поддержкой куратора и участием Ахмада для тех, кто хочет прийти к результату быстрее и увереннее.',
+    oldPrice: '14 990',
+    seats: '100 мест',
+    seatsUrgent: 'Свободно 60 — успейте забрать своё место',
+    subtitle: 'С куратором и живым участием Ахмада. Быстрее к результату, увереннее каждый шаг.',
     color: '#DC2626',
     level: 1,
     popular: true,
     isDiamond: false,
-
     previewCount: 4,
     features: [
       { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
@@ -78,12 +85,14 @@ const plans: Plan[] = [
   {
     name: 'VIP',
     price: '19 990',
-    subtitle: 'Формат углубленного обучения с личным участием Ахмада и расширенной персональной поддержкой.',
+    oldPrice: '39 990',
+    seats: '20 мест',
+    seatsUrgent: 'Осталось всего 20 мест',
+    subtitle: 'Максимальная поддержка Ахмада и персональные разборы. Для тех, кто хочет результат быстро.',
     color: '#D4AF37',
     level: 2,
     popular: false,
     isDiamond: false,
-
     previewCount: 4,
     features: [
       { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
@@ -104,12 +113,14 @@ const plans: Plan[] = [
   {
     name: 'Личное наставничество',
     price: '49 990',
-    subtitle: 'Формат индивидуальной работы с Ахмадом и сопровождения до результата.',
+    oldPrice: '99 990',
+    seats: '2 места',
+    seatsUrgent: 'Осталось 2 места — последний шанс',
+    subtitle: 'Работа с Ахмадом один на один. Сопровождение до конкретного результата — без отговорок.',
     color: DIAMOND_COLOR,
     level: 3,
     popular: false,
     isDiamond: true,
-
     previewCount: 4,
     features: [
       { text: 'Полноценная программа обучения, состоящая из 7 обучающих модулей', addedAt: 0 },
@@ -219,19 +230,48 @@ function PlanCard({ plan }: { plan: Plan }) {
       )}
 
       <div className="p-6 flex flex-col flex-grow">
-        {/* Name */}
-        <div
-          className="inline-block px-3 py-1 rounded-lg font-display text-xs font-bold mb-3 self-start"
-          style={{ background: plan.color + '20', color: plan.color }}
-        >
-          {plan.name}
+        {/* Name + discount badge */}
+        <div className="flex items-center gap-2 mb-3">
+          <div
+            className="inline-block px-3 py-1 rounded-lg font-display text-xs font-bold"
+            style={{ background: plan.color + '20', color: plan.color }}
+          >
+            {plan.name}
+          </div>
+          <div className="px-2 py-0.5 rounded-md bg-[#DC2626] text-white font-display text-xs font-black">
+            −50%
+          </div>
         </div>
 
         {/* Subtitle */}
-        <p className="font-body text-sm text-white/55 leading-relaxed mb-5 pr-16">{plan.subtitle}</p>
+        <p className="font-body text-sm text-white/55 leading-relaxed mb-4">{plan.subtitle}</p>
+
+        {/* Seats */}
+        <div
+          className="flex items-center gap-2 mb-4 px-3 py-2 rounded-xl"
+          style={{ background: plan.color + '12', border: `1px solid ${plan.color}30` }}
+        >
+          <span className="text-sm" style={{ filter: 'grayscale(0)' }}>
+            {plan.level === 0 ? '♾️' : plan.level === 3 ? '🔥' : '⚡'}
+          </span>
+          <div className="flex flex-col">
+            <span className="font-display text-xs font-bold" style={{ color: plan.color }}>
+              {plan.seats}
+            </span>
+            {plan.seatsUrgent && (
+              <span className="font-body text-xs text-white/50 leading-tight">{plan.seatsUrgent}</span>
+            )}
+          </div>
+        </div>
 
         {/* Price */}
         <div className="mb-6">
+          <div className="flex items-center gap-3 mb-1">
+            <span className="font-body text-sm text-white/35 line-through">
+              {plan.oldPrice} ₽
+            </span>
+            <span className="font-body text-xs text-[#DC2626] font-semibold">скидка 50%</span>
+          </div>
           <div className="flex items-end gap-2">
             {plan.level === 2 && !plan.isDiamond ? (
               <span className="font-display font-black text-4xl text-gradient-gold">{plan.price}</span>

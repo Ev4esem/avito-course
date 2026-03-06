@@ -2,6 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 
+// ← Дату старта меняй здесь
+const START_DATE = '25 марта';
+
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -141,13 +144,29 @@ export default function Hero() {
           ))}
         </div>
 
+        {/* Start date urgency */}
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10">
+            <span className="text-base">🗓️</span>
+            <div className="text-left">
+              <div className="font-display text-xs text-white/50 uppercase tracking-wider">Старт обучения</div>
+              <div className="font-display text-sm font-bold text-white">{START_DATE} — места ограничены</div>
+            </div>
+          </div>
+        </div>
+
         {/* CTA button */}
         <a
           href="#pricing"
           className="btn-primary px-10 py-4 rounded-2xl font-display text-sm font-bold tracking-wide inline-block text-center"
         >
-          Занять место →
+          Забрать место →
         </a>
+
+        {/* Urgency sub-text */}
+        <p className="mt-3 font-body text-xs text-white/35">
+          Успейте до старта — после начала курса цена вырастет вдвое
+        </p>
 
       </div>
 
