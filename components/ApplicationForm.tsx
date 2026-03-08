@@ -15,20 +15,30 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
     goal: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.name === 'name') setNameError('');
     if (e.target.name === 'phone') setPhoneError('');
   };
 
   const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
-    if (!form.name || !form.phone) return;
-    if (!isValidPhone(form.phone)) {
-      setPhoneError('Введите корректный номер телефона');
-      return;
+    let hasError = false;
+    if (!form.name.trim()) {
+      setNameError('Пожалуйста, введите ваше имя');
+      hasError = true;
     }
+    if (!form.phone.trim()) {
+      setPhoneError('Пожалуйста, введите номер телефона');
+      hasError = true;
+    } else if (!isValidPhone(form.phone)) {
+      setPhoneError('Введите корректный номер (не менее 10 цифр)');
+      hasError = true;
+    }
+    if (hasError) return;
 
     setStatus('loading');
     try {
@@ -70,7 +80,6 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
             </h2>
             <p className="font-body text-white/60 max-w-lg mx-auto reveal">
               Заполните форму и мы свяжемся с вами в течение дня.
-              Осталось <span className="text-[#DC2626] font-medium">12 мест</span> на ближайший поток.
             </p>
           </div>
         )}
@@ -100,8 +109,13 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
                       value={form.name}
                       onChange={handleChange}
                       placeholder="Иван Петров"
-                      className="w-full bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl px-4 py-3.5 font-body text-white placeholder-white/25 focus:outline-none focus:border-[#DC2626]/50 transition-colors"
+                      className={`w-full bg-[#0A0A0A] border rounded-xl px-4 py-3.5 font-body text-white placeholder-white/25 focus:outline-none transition-colors ${
+                        nameError ? 'border-red-500/70 focus:border-red-500' : 'border-[#1E1E1E] focus:border-[#DC2626]/50'
+                      }`}
                     />
+                    {nameError && (
+                      <p className="font-body text-xs text-red-400 mt-1.5">{nameError}</p>
+                    )}
                   </div>
 
                   {/* Phone */}
@@ -169,7 +183,7 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
-                  disabled={status === 'loading' || !form.name || !form.phone || !isValidPhone(form.phone)}
+                  disabled={status === 'loading'}
                   className="btn-primary w-full py-5 rounded-2xl font-display text-base font-bold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? (
