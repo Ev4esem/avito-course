@@ -2,6 +2,11 @@
 
 import { useState } from 'react';
 
+function isValidPhone(phone: string): boolean {
+  const digits = phone.replace(/\D/g, '');
+  return digits.length >= 10 && digits.length <= 15;
+}
+
 export default function ApplicationForm({ initialTariff }: { initialTariff?: string }) {
   const [form, setForm] = useState({
     name: '',
@@ -10,14 +15,20 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
     goal: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [phoneError, setPhoneError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.name === 'phone') setPhoneError('');
   };
 
   const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (!form.name || !form.phone) return;
+    if (!isValidPhone(form.phone)) {
+      setPhoneError('Введите корректный номер телефона');
+      return;
+    }
 
     setStatus('loading');
     try {
@@ -104,8 +115,13 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
                       value={form.phone}
                       onChange={handleChange}
                       placeholder="+7 (999) 123-45-67"
-                      className="w-full bg-[#0A0A0A] border border-[#1E1E1E] rounded-xl px-4 py-3.5 font-body text-white placeholder-white/25 focus:outline-none focus:border-[#DC2626]/50 transition-colors"
+                      className={`w-full bg-[#0A0A0A] border rounded-xl px-4 py-3.5 font-body text-white placeholder-white/25 focus:outline-none transition-colors ${
+                        phoneError ? 'border-red-500/70 focus:border-red-500' : 'border-[#1E1E1E] focus:border-[#DC2626]/50'
+                      }`}
                     />
+                    {phoneError && (
+                      <p className="font-body text-xs text-red-400 mt-1.5">{phoneError}</p>
+                    )}
                   </div>
                 </div>
 
@@ -153,7 +169,7 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
                 {/* Submit */}
                 <button
                   onClick={handleSubmit}
-                  disabled={status === 'loading' || !form.name || !form.phone}
+                  disabled={status === 'loading' || !form.name || !form.phone || !isValidPhone(form.phone)}
                   className="btn-primary w-full py-5 rounded-2xl font-display text-base font-bold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? (

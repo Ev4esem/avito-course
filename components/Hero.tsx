@@ -118,7 +118,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p className="font-body text-base sm:text-lg text-white/70 max-w-xl mx-auto mb-10 leading-relaxed">
+        <p className="font-display font-bold text-xl sm:text-2xl text-white/85 max-w-xl mx-auto mb-10 leading-relaxed">
           Как зарабатывать на Авито от 100&nbsp;000&nbsp;₽/мес?
         </p>
 

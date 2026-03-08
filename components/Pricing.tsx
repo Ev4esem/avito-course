@@ -258,9 +258,6 @@ function PlanCard({ plan }: { plan: Plan }) {
             <span className="font-display text-xs font-bold" style={{ color: plan.color }}>
               {plan.seats}
             </span>
-            {plan.seatsUrgent && (
-              <span className="font-body text-xs text-white/50 leading-tight">{plan.seatsUrgent}</span>
-            )}
           </div>
         </div>
 
