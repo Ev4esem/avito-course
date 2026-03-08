@@ -11,7 +11,7 @@ const modules = [
   {
     number: '02',
     title: 'Создание продающих объявлений',
-    desc: 'Объявление — это твой менеджер по продажам. Научу писать тексты, делать фото и выставлять цену, которые конвертируют.',
+    desc: 'Объявление — это ваш менеджер по продажам. Научим писать тексты, делать фото и выставлять цену, которые конвертируют.',
     topics: ['Формулы продающих заголовков', 'Фотосъёмка для Авито', 'A/B тесты объявлений'],
     color: '#D4AF37',
   },
@@ -61,7 +61,7 @@ export default function WhatYouLearn() {
             <div className="w-8 h-px bg-[#DC2626]" />
           </div>
           <h2 className="font-display font-black text-4xl md:text-6xl text-white leading-tight mb-4 reveal">
-            Чему ты
+            Чему вы
             <br />
             <span className="text-gradient-red">научишься</span>
           </h2>
