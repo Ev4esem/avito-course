@@ -100,13 +100,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-3xl mx-auto pt-24 sm:pt-20">
-        {/* Badge */}
-        <div className="flex justify-center mb-8">
-          <div className="px-6 py-2.5 rounded-full bg-[#DC2626] text-white font-display font-bold tracking-widest text-xs sm:text-sm uppercase">
-            Авторская программа от AHMA SALES
-          </div>
-        </div>
-
         {/* Main heading */}
         <h1 className="font-display font-black leading-[1.05] mb-4">
           <span className="block text-3xl sm:text-5xl md:text-6xl text-white uppercase">
@@ -167,6 +160,13 @@ export default function Hero() {
         <p className="mt-3 font-body text-xs text-white/35">
           Успейте до старта — после начала курса цена вырастет вдвое
         </p>
+
+        {/* Brand badge — bottom center */}
+        <div className="flex justify-center mt-8">
+          <div className="px-6 py-2.5 rounded-full border border-white/15 bg-white/5 text-white/60 font-display font-bold tracking-widest text-xs uppercase">
+            Авторская программа от AHMA_SALES
+          </div>
+        </div>
 
       </div>
 

@@ -61,9 +61,7 @@ export default function WhatYouLearn() {
             <div className="w-8 h-px bg-[#DC2626]" />
           </div>
           <h2 className="font-display font-black text-4xl md:text-6xl text-white leading-tight mb-4 reveal">
-            Чему вы
-            <br />
-            <span className="text-gradient-red">научишься</span>
+            <span className="text-gradient-red">Научитесь</span>
           </h2>
           <p className="font-body text-white/60 max-w-xl mx-auto reveal">
             6 модулей с практическими заданиями и живой проверкой куратора.

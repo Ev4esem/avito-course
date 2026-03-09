@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function isValidPhone(phone: string): boolean {
   const digits = phone.replace(/\D/g, '');
-  return digits.length >= 10 && digits.length <= 15;
+  return digits.length >= 11 && digits.length <= 15;
 }
 
 export default function ApplicationForm({ initialTariff }: { initialTariff?: string }) {
@@ -35,7 +35,7 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
       setPhoneError('Пожалуйста, введите номер телефона');
       hasError = true;
     } else if (!isValidPhone(form.phone)) {
-      setPhoneError('Введите корректный номер (не менее 10 цифр)');
+      setPhoneError('Введите корректный номер (не менее 11 цифр)');
       hasError = true;
     }
     if (hasError) return;
