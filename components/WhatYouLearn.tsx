@@ -67,7 +67,7 @@ export default function WhatYouLearn() {
           </h2>
           <p className="font-body text-white/60 max-w-xl mx-auto reveal">
             6 модулей с практическими заданиями и живой проверкой куратора.
-            Без воды — только то, что реально работает в 2025 году.
+            Без воды — только то, что реально работает в 2026 году.
           </p>
         </div>
 

@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function isValidPhone(phone: string): boolean {
   const digits = phone.replace(/\D/g, '');
-  return digits.length >= 11 && digits.length <= 15;
+  return digits.length === 11;
 }
 
 export default function ApplicationForm({ initialTariff }: { initialTariff?: string }) {
@@ -19,9 +19,15 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
   const [phoneError, setPhoneError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    if (e.target.name === 'name') setNameError('');
-    if (e.target.name === 'phone') setPhoneError('');
+    if (e.target.name === 'phone') {
+      // Оставляем только цифры и ограничиваем ровно 11 символами
+      const digits = e.target.value.replace(/\D/g, '').slice(0, 11);
+      setForm((prev) => ({ ...prev, phone: digits }));
+      setPhoneError('');
+    } else {
+      setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+      if (e.target.name === 'name') setNameError('');
+    }
   };
 
   const handleSubmit = async (e: React.MouseEvent) => {
@@ -35,7 +41,7 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
       setPhoneError('Пожалуйста, введите номер телефона');
       hasError = true;
     } else if (!isValidPhone(form.phone)) {
-      setPhoneError('Введите корректный номер (не менее 11 цифр)');
+      setPhoneError('Введите ровно 11 цифр номера телефона');
       hasError = true;
     }
     if (hasError) return;
@@ -128,13 +134,17 @@ export default function ApplicationForm({ initialTariff }: { initialTariff?: str
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="+7 (999) 123-45-67"
+                      placeholder="79991234567"
+                      maxLength={11}
                       className={`w-full bg-[#0A0A0A] border rounded-xl px-4 py-3.5 font-body text-white placeholder-white/25 focus:outline-none transition-colors ${
                         phoneError ? 'border-red-500/70 focus:border-red-500' : 'border-[#1E1E1E] focus:border-[#DC2626]/50'
                       }`}
                     />
+                    <p className="font-body text-xs text-white/30 mt-1">
+                      {form.phone.replace(/\D/g, '').length}/11 цифр
+                    </p>
                     {phoneError && (
-                      <p className="font-body text-xs text-red-400 mt-1.5">{phoneError}</p>
+                      <p className="font-body text-xs text-red-400 mt-0.5">{phoneError}</p>
                     )}
                   </div>
                 </div>

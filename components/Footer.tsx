@@ -11,7 +11,7 @@ export default function Footer() {
           </span>
         </div>
         <p className="font-body text-xs text-white/30 text-center">
-          © 2025 АвитоПро. Все права защищены.
+          © 2026 АвитоПро. Все права защищены.
         </p>
         <div className="flex gap-4">
           <a href="#" className="font-body text-xs text-white/40 hover:text-white/70 transition-colors">
